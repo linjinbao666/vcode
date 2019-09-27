@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>V-CODE</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="./static/css/bootstrap.css">
+		<script type="text/javascript" src="./static/js/vue.js"></script>
+		<script type="text/javascript" src="./static/js/vue-resource.js"></script>
+	</head>
+	<body>
+		<!-- 导航开始 -->
+		<nav class="navbar navbar-default" id="navList">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#" v-color="">VCODE</a>
+				</div>
+				<div class="collapse navbar-collapse" id="example">
+					<ul class="nav navbar-nav">
+						<li class="navbar-link" v-for="item in navList" :key="item.id"><a href="{{item.href}}">{{item.value}}</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">登录</a></li>
+						<li><a href="">|</a></li>
+						<li><a href="#">注册</a></li>
+					</ul>
+					<form class="navbar-form navbar-right">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="请输入关键字" v-model="keyword">
+						</div>
+						<button type="submit" class="btn btn-default" @click="search">搜索</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+		<!-- 导航结束 -->
+		<!-- 中部开始 -->
+
+		<div class="jumbotron" id="myJumbotron">
+			<div class="container">
+				<h1>VCODE验证码生成器</h1>
+				<p class="text-primary">
+					Vcode验证码在线生成是一种验证码的特殊应用，验证码在线生成是一种验证码的特殊应用验证码在线生成是一种验证码的特殊应用
+					验证码在线生成是一种验证码的特殊应用
+					验证码在线生成是一种验证码的特殊应用
+					验证码在线生成是一种验证码的特殊应用
+				</p>
+				<p><a class="btn btn-primary btn-lg" href="#" role="button">了解更多</a></p>
+			</div>
+		</div>
+		<div class="container">
+			<h2 class="">模板案例</h2>
+		</div>
+		<div class="row container-fluid text-center">
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row container-fluid text-center">
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="images/thumbail.svg" alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+							Nullam id dolor id nibh ultricies vehicula ut id elit.
+						</p>
+						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<h2 class="">服务支持</h2>
+		</div>
+		<form class="container form-horizontal text-center">
+			<div class="form-group">
+				<label class="text-info control-label col-sm-2 col-sm-offset-2">邮箱：</label>
+				<div class="input-group col-sm-3">
+					<input type="text" class="form-control" id="" placeholder="www.example">
+					<div class="input-group-addon">.com</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 text-info control-label col-sm-offset-2">电话：</label>
+				<div class="col-sm-3 input-group">
+				  <input type="tel" class="form-control" id="" placeholder="139-8888-8888">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 text-info control-label col-sm-offset-2">地址：</label>
+				<div class="col-sm-3 input-group">
+					<select class="form-control">
+						<option>江苏</option>
+						<option>浙江</option>
+					</select>
+					<div class="input-group-addon">省</div>
+					<select class="form-control">
+						<option>淮安</option>
+						<option>苏州</option>
+					</select>
+					<div class="input-group-addon">市</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-3 col-sm-offset-4 input-group">
+					<select class="form-control">
+						<option>盱眙</option>
+						<option>涟水</option>
+					</select>
+					<div class="input-group-addon">县</div>
+					<select class="form-control">
+						<option>铁佛</option>
+						<option>管镇</option>
+					</select>
+					<div class="input-group-addon">镇</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group col-sm-3 col-sm-offset-4">
+					<input type="text" class="form-control" />
+					<div class="input-group-addon">详细地址</div>
+				</div>
+			</div>
+			
+		</form>
+		
+		<div class="container">
+			<h2 class="">关于我们</h2>
+		</div>
+		<div class="container">
+			<p class="text-info">我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			我们市哈哈哈哈哈哈哈
+			
+			我们市哈哈哈哈哈哈哈我们市哈哈哈哈哈哈哈
+			
+			我们市哈哈哈哈哈哈哈</p>
+		</div>
+		<!-- 中部结束 -->
+
+
+
+	</body>
+
+	<script type="text/javascript">
+		var vmNav = new Vue({
+			el: '#navList',
+			data: {
+				keyword: '',
+				navList: [{
+						id: 1,
+						name: '',
+						value: '主页',
+						href:'http://baidu.com'
+					},
+					{
+						id: 2,
+						name: '',
+						value: '项目介绍',
+						href:'#myJumbotron'
+					},
+					{
+						id: 3,
+						name: '',
+						value: '模板案例'
+					},
+					{
+						id: 4,
+						name: '',
+						value: '服务支持'
+					},
+					{
+						id: 5,
+						name: '',
+						value: '关于'
+					}
+				]
+			},
+			methods: {
+				init: function() {
+
+				},
+				showMsg: function() {
+					alert('ceshi')
+				},
+				search: function() {
+
+				}
+			},
+			directives: {
+				focus: {
+					inserted: function(el) {
+						el.focus()
+					}
+				},
+				color: {
+					bind: function(el) {
+						el.style.color = 'red';
+					},
+					inserted: function(el) {
+						el.style.color = 'blue';
+					}
+				}
+			}
+		})
+	</script>
+
+
+
+</html>

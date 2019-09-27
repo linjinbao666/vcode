@@ -19,15 +19,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--配置视图解析器-->
-    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
-
-    <!--过滤静态资源-->
-    <mvc:resources mapping="/static/" location="/WEB-INF/static/**" />
-
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
     <!--开启SpringMVC注解的支持-->
     <mvc:annotation-driven />
 </beans>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>人员管理</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                                <div class="layui-inline layui-show-xs-block" style="margin-left: 400px;">
+                                    <a class="layui-btn layui-btn-radius" onclick="location.reload()" title="刷新"><i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+                                </div>
+                            </form>
+                            <table id="demo" lay-filter="test" class="layui-hide"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-card-body">
+            <button class="layui-btn layui-btn-danger" lay-event="dellChosed"><i class="layui-icon"></i>批量删除</button>
+            <button class="layui-btn layui-btn-sm" lay-event="addUser"><i class="layui-icon"></i>添加</button>
+
+        </div>
+    </script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">禁用</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="on">启用</a>
+    </script>
+    <script>
+      layui.use(['laydate','form','table'], function(){
+        var laydate = layui.laydate;
+        var form = layui.form;
+        var table = layui.table;
+        table.render({
+            elem: '#demo'
+            ,height: 400
+            ,url: './adminUser.do' //数据接口
+            ,page: true
+            ,loading:true
+            ,toolbar: '#toolbarDemo'
+            ,cellMinWidth: 80
+            ,cols: [[
+                {type:'checkbox'}
+                ,{field: 'userid', title: '用户编号'}
+                ,{field: 'username', title: '用户名', width:150,align:'center'}
+                ,{field: 'roleid', title: '角色', width:150,align:'center'}
+                ,{title:'操作', toolbar: '#barDemo', width:240,align:'center'}
+            ]]
+        });
+
+      table.on('toolbar(test)', function (obj) {
+          var checkStatus = table.checkStatus(obj.config.id);
+          switch(obj.event){
+              case 'dellChosed':
+                  layer.confirm("确定删除选中吗")
+                  break;
+              case 'addUser':
+                  xadmin.open('添加用户','./admin-add.html',600,400)
+                  break;
+          };
+      })
+      //监听行工具事件
+      table.on('tool(test)', function(obj){
+          var data = obj.data;
+          alert("hello")
+          //console.log(obj)
+          if(obj.event === 'del'){
+              layer.confirm('真的删除行么', function(index){
+                  obj.del();
+                  layer.close(index);
+              });
+          } else if(obj.event === 'edit'){
+              layer.prompt({
+                  formType: 2
+                  ,value: data.email
+              }, function(value, index){
+                  obj.update({
+                      email: value
+                  });
+                  layer.close(index);
+              });
+          }
+      });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+
+      });
+    </script>
+
+</html>
